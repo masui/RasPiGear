@@ -19,6 +19,8 @@ def play(file)
   if file =~ /^http.*youtube.com/ then
     stream = `youtube-dl -g #{file}`
     system "omxplayer '#{stream.chomp}' > /dev/null &"
+  elsif file =~ /^http/ then
+    system "omxplayer '#{file}' > /dev/null &"
   elsif file =~ /^\// then
     system "omxplayer '#{file}' > /dev/null &"
   end
